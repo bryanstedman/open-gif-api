@@ -1,12 +1,16 @@
 {
-  "name": "application-name",
+  "name": "gitapi",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "express": "3.2.4",
     "jade": "*"
+  },  
+  "engines": {
+    "node": "0.10.x",
+    "npm":  "1.2.x"
   }
 }
