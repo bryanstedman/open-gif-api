@@ -5,6 +5,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , gif = require('./routes/gif')
   , http = require('http')
   , path = require('path');
 
@@ -27,7 +28,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/:tag', routes.index);
+app.get('/all', gif.list);
+app.get('/tag/:tag', gif.tag);
+// app.get('/test', gif.test);
+// app.get('/:width/:height', routes.index);
+// app.get('/:tag', routes.index);
 // app.get('/tag/:tag/:width', routes.index);
 // app.get('/width/:width', routes.index);
 // app.get('/users', user.list);
