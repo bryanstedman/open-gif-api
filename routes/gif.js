@@ -41,8 +41,16 @@ exports.widthHeight = function(req, res){
   http.get('http://localhost:8000/gifs.json', function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
-      console.log(req.params.height + " width: " + req.params.width);
-      res.json(req.params.height + " width: " + req.params.width);
+      var response = [];
+      for (i=0; i<parsed.length; i++) {
+        if (parsed[i].width == req.params.width && parsed[i].height == req.params.height) {
+          response.push(parsed[i]);
+        }
+      }
+      if (response == '') {
+        response = "Oh no! We don't have any gif that size";
+      } 
+      res.json(response);
     })
   });
 };
