@@ -3,9 +3,11 @@
  * Show all gifs.
  */
 
+var db = 'http://localhost:8000/gifs.json';
+
 exports.list = function(req, res){
   var http = require('http');
-  http.get('http://localhost:8000/gifs.json', function (res2) {
+  http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
       console.log(req.params.tag)
@@ -16,9 +18,10 @@ exports.list = function(req, res){
 
 exports.width = function(req, res){
   var http = require('http');
-  http.get('http://localhost:8000/gifs.json', function (res2) {
+  http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
+
       console.log(req.params.width);
       res.json(" width: " + req.params.width);
     })
@@ -27,7 +30,7 @@ exports.width = function(req, res){
 
 exports.height = function(req, res){
   var http = require('http');
-  http.get('http://localhost:8000/gifs.json', function (res2) {
+  http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
       console.log(req.params.height);
@@ -38,7 +41,7 @@ exports.height = function(req, res){
 
 exports.widthHeight = function(req, res){
   var http = require('http');
-  http.get('http://localhost:8000/gifs.json', function (res2) {
+  http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
       var response = [];
@@ -57,7 +60,7 @@ exports.widthHeight = function(req, res){
 
 exports.tag = function(req, res){
   var http = require('http');
-  http.get('http://localhost:8000/gifs.json', function (res2) {
+  http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
       var response = [];
@@ -78,7 +81,7 @@ exports.tag = function(req, res){
 
 exports.search = function(req, res){
   var http = require('http');
-  http.get('http://localhost:8000/gifs.json', function (res2) {
+  http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
       console.log(req.params.height + " width: " + req.params.width);
