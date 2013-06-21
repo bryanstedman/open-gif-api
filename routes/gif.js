@@ -14,7 +14,29 @@ exports.list = function(req, res){
   });
 };
 
-exports.size = function(req, res){
+exports.width = function(req, res){
+  var http = require('http');
+  http.get('http://localhost:8000/gifs.json', function (res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      console.log(req.params.width);
+      res.json(" width: " + req.params.width);
+    })
+  });
+};
+
+exports.height = function(req, res){
+  var http = require('http');
+  http.get('http://localhost:8000/gifs.json', function (res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      console.log(req.params.height);
+      res.json(req.params.height);
+    })
+  });
+};
+
+exports.widthHeight = function(req, res){
   var http = require('http');
   http.get('http://localhost:8000/gifs.json', function (res2) {
     res2.on('data', function(d) {
@@ -26,14 +48,22 @@ exports.size = function(req, res){
 };
 
 exports.tag = function(req, res){
-  // TODO Filter parsed json by tag
-  // var http = require('http');
-  // http.get('http://gifapi.co/gifs.json', function (res2) {
-  //   res2.on('data', function(d) {
-  //     var parsed = JSON.parse(d);
-  //     var response = [];
-  //     // res.json(parsed);
-  //   });
-  // };
-  res.send(req.params.tag);
+  var http = require('http');
+  http.get('http://localhost:8000/gifs.json', function (res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      res.json(req.params.tag);
+    })
+  });
+};
+
+exports.search = function(req, res){
+  var http = require('http');
+  http.get('http://localhost:8000/gifs.json', function (res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      console.log(req.params.height + " width: " + req.params.width);
+      res.json(req.params.height + " width: " + req.params.width);
+    })
+  });
 };

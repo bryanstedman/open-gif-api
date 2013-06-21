@@ -30,8 +30,10 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/all', gif.list);
 app.get('/tag/:tag', gif.tag);
-// app.get('/test', gif.test);
-app.get('/:width/:height', gif.size);
+app.get('/width/:width', gif.width);
+app.get('/height/:height', gif.height);
+app.get('/:width/:height', gif.widthHeight);
+// app.get('/search/?height=:height&width=:width&tag=:tag', gif.search); 
 // app.get('/:tag', routes.index);
 // app.get('/tag/:tag/:width', routes.index);
 // app.get('/width/:width', routes.index);
