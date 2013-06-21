@@ -33,6 +33,8 @@ app.get('/tag/:tag', gif.tag);
 app.get('/width/:width', gif.width);
 app.get('/height/:height', gif.height);
 app.get('/:width/:height', gif.widthHeight);
+app.get('/weight/:weight', gif.weight);
+app.get('/latest', gif.latest);
 // app.get('/search/?height=:height&width=:width&tag=:tag', gif.search); 
 // app.get('/:tag', routes.index);
 // app.get('/tag/:tag/:width', routes.index);

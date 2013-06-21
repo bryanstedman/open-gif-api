@@ -1,4 +1,5 @@
 var db = 'http://localhost:8000/gifs.json';
+// var db = 'http://gifapi.co/gifs.json';
 
 exports.list = function(req, res){
   var http = require('http');
@@ -68,6 +69,26 @@ exports.widthHeight = function(req, res){
   });
 };
 
+exports.weight = function(req, res){
+  var http = require('http');
+  http.get(db, function (res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      var response = [];
+      for (i=0; i<parsed.length; i++) {
+        if (parsed[i].weight == req.params.weight) {
+          response.push(parsed[i]);
+        }
+      }
+      // if (response == '') {
+      //   response = "Oh no! We don't have any gif that tall"; 
+      // }
+      res.json(response);
+    })
+  });
+};
+
+
 exports.tag = function(req, res){
   var http = require('http');
   http.get(db, function (res2) {
@@ -87,6 +108,18 @@ exports.tag = function(req, res){
       res.json(response);
     })
   });
+};
+
+exports.latest = function(req, res) {
+  var http = require('http');
+  http.get(db, function(res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      response = [];
+      response .push(parsed[parsed.length - 1]);
+      res.json(response);
+    });
+  })
 };
 
 exports.search = function(req, res){
