@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1>The Open Gif API</h1>
+    <p>Search for gifs below and we'll give you a handy json file back for you to do cool stuff with</p>
+    <div class="search">
+      <form action="http://localhost:3000/" method="get">
+        <label for="select-type">search by</label>
+        <select name="select-type" id="search">
+          <option value="tag">tag</option>
+          <option value="width">width</option>
+          <option value="height">height</option>
+          <option value="widthheight">width & height</option>
+        </select>
+        <input type="text" placeholder="unicorn" name="search">
+        <input type="submit">        
+      </form>
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+</body>
+</html>
