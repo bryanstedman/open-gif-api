@@ -52,7 +52,18 @@ exports.tag = function(req, res){
   http.get('http://localhost:8000/gifs.json', function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
-      res.json(req.params.tag);
+      var response = [];
+      for(i=0; i<parsed.length; i++) {
+        for(j=0; j<parsed[i].tags.length; j++) {
+          if (parsed[i].tags[j] == req.params.tag) {
+            response.push(parsed[i]);
+          }
+        }
+      }
+      if(response == ''){
+        response = 'Oh no! We do not have any gifs tagged ' + req.params.tag;
+      };
+      res.json(response);
     })
   });
 };
