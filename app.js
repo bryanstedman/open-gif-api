@@ -31,7 +31,7 @@ app.get('/', routes.index);
 app.get('/all', gif.list);
 app.get('/tag/:tag', gif.tag);
 // app.get('/test', gif.test);
-// app.get('/:width/:height', routes.index);
+app.get('/:width/:height', gif.size);
 // app.get('/:tag', routes.index);
 // app.get('/tag/:tag/:width', routes.index);
 // app.get('/width/:width', routes.index);

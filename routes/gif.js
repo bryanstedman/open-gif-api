@@ -14,6 +14,17 @@ exports.list = function(req, res){
   });
 };
 
+exports.size = function(req, res){
+  var http = require('http');
+  http.get('http://localhost:8000/gifs.json', function (res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      console.log(req.params.height + " width: " + req.params.width);
+      res.json(req.params.height + " width: " + req.params.width);
+    })
+  });
+};
+
 exports.tag = function(req, res){
   // TODO Filter parsed json by tag
   // var http = require('http');
