@@ -1,8 +1,3 @@
-
-/*
- * Show all gifs.
- */
-
 var db = 'http://localhost:8000/gifs.json';
 
 exports.list = function(req, res){
@@ -21,9 +16,16 @@ exports.width = function(req, res){
   http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
-
-      console.log(req.params.width);
-      res.json(" width: " + req.params.width);
+      var response = [];
+      for (i=0; i<parsed.length; i++) {
+        if (parsed[i].width == req.params.width) {
+          response.push(parsed[i]);
+        }
+      }
+      if (response == '') {
+        response = "Oh no! We don't have any gif that wide"; 
+      }
+      res.json(response);
     })
   });
 };
@@ -33,8 +35,16 @@ exports.height = function(req, res){
   http.get(db, function (res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
-      console.log(req.params.height);
-      res.json(req.params.height);
+      var response = [];
+      for (i=0; i<parsed.length; i++) {
+        if (parsed[i].height == req.params.height) {
+          response.push(parsed[i]);
+        }
+      }
+      if (response == '') {
+        response = "Oh no! We don't have any gif that tall"; 
+      }
+      res.json(response);
     })
   });
 };
