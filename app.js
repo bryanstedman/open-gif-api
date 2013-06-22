@@ -27,7 +27,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+// app.get('/', routes.index);
+app.use('/', express.static(__dirname + '/public'));
 app.get('/all', gif.list);
 app.get('/tag/:tag', gif.tag);
 app.get('/width/:width', gif.width);
