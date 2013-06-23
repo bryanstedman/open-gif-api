@@ -1,5 +1,5 @@
-// var db = 'http://localhost:8000/gifs.json';
-var db = 'http://gifapi.co/gifs.json';
+var db = 'http://localhost:8000/gifs.json';
+// var db = 'http://gifapi.co/gifs.json';
 
 exports.list = function(req, res){
   var http = require('http');
@@ -166,7 +166,7 @@ exports.random = function(req, res) {
   http.get(db, function(res2) {
     res2.on('data', function(d) {
       var parsed = JSON.parse(d);
-      index = Math.floor(Math.random()*parsed.length + 1)
+      index = Math.floor(Math.random()*parsed.length)
       response = parsed[index];
       res.json(response);
     });
