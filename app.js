@@ -37,10 +37,7 @@ app.get('/:width/:height', gif.widthHeight);
 app.get('/weight/:weight', gif.weight);
 app.get('/latest', gif.latest);
 app.get('/search', gif.search); 
-// app.get('/:tag', routes.index);
-// app.get('/tag/:tag/:width', routes.index);
-// app.get('/width/:width', routes.index);
-// app.get('/users', user.list);
+app.get('/test', gif.test);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

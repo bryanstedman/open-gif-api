@@ -122,6 +122,11 @@ exports.latest = function(req, res) {
   })
 };
 
+exports.test = function(req, res) {
+  var response = req.query;
+  res.send(response);
+}
+
 exports.search = function(req, res){
   var http = require('http');
   http.get(db, function (res2) {
@@ -135,18 +140,18 @@ exports.search = function(req, res){
         for (i=0; i<parsed.length; i++) {
           for (j=0; j<parsed[i].tags.length; j++) {
             if ((parsed[i].tags[j] == req.query.tag)
-              && (req.query.width == null || req.query.width == parsed[i].width)
-              && (req.query.height == null || req.query.height == parsed[i].height)
-              && (req.query.weight == null || req.query.weight == parsed[i].weight)) {
+              && (req.query.width == null || req.query.width == '' || req.query.width == parsed[i].width)
+              && (req.query.height == null || req.query.height == '' || req.query.height == parsed[i].height)
+              && (req.query.weight == null || req.query.weight == '' || req.query.weight == parsed[i].weight)) {
               response.push(parsed[i]);
             }
           }
         }
       } else {
         for (i=0; i<parsed.length; i++) {
-          if ((req.query.width == null || req.query.width == parsed[i].width)
-              && (req.query.height == null || req.query.height == parsed[i].height)
-              && (req.query.weight == null || req.query.weight == parsed[i].weight)) {
+          if ((req.query.width == null || req.query.width == '' || req.query.width == parsed[i].width)
+              && (req.query.height == null || req.query.height == '' || req.query.height == parsed[i].height)
+              && (req.query.weight == null || req.query.weight == '' || req.query.weight == parsed[i].weight)) {
             response.push(parsed[i]);
           }
         }
