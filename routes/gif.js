@@ -160,3 +160,17 @@ exports.search = function(req, res){
     })
   });
 };
+
+exports.random = function(req, res) {
+  var http = require('http');
+  http.get(db, function(res2) {
+    res2.on('data', function(d) {
+      var parsed = JSON.parse(d);
+      index = Math.floor(Math.random()*parsed.length + 1)
+      response = parsed[index];
+      res.json(response);
+    });
+  })
+}
+
+

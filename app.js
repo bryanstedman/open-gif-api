@@ -38,6 +38,7 @@ app.get('/weight/:weight', gif.weight);
 app.get('/latest', gif.latest);
 app.get('/search', gif.search); 
 app.get('/test', gif.test);
+app.get('/random', gif.random);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
