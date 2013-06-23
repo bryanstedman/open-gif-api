@@ -27,11 +27,16 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+// app.get('/', routes.index);
+app.use('/', express.static(__dirname + '/public'));
 app.get('/all', gif.list);
 app.get('/tag/:tag', gif.tag);
-// app.get('/test', gif.test);
-// app.get('/:width/:height', routes.index);
+app.get('/width/:width', gif.width);
+app.get('/height/:height', gif.height);
+app.get('/:width/:height', gif.widthHeight);
+app.get('/weight/:weight', gif.weight);
+app.get('/latest', gif.latest);
+app.get('/search', gif.search); 
 // app.get('/:tag', routes.index);
 // app.get('/tag/:tag/:width', routes.index);
 // app.get('/width/:width', routes.index);
