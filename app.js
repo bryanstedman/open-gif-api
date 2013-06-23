@@ -5,6 +5,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , gif = require('./routes/gif')
   , http = require('http')
   , path = require('path');
 
@@ -26,11 +27,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/:tag', routes.index);
-// app.get('/tag/:tag/:width', routes.index);
-// app.get('/width/:width', routes.index);
-// app.get('/users', user.list);
+// app.get('/', routes.index);
+app.use('/', express.static(__dirname + '/public'));
+app.get('/all', gif.list);
+app.get('/tag/:tag', gif.tag);
+app.get('/width/:width', gif.width);
+app.get('/height/:height', gif.height);
+app.get('/:width/:height', gif.widthHeight);
+app.get('/weight/:weight', gif.weight);
+app.get('/latest', gif.latest);
+app.get('/search', gif.search); 
+app.get('/test', gif.test);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

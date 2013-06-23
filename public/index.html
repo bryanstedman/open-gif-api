@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1>The Open Gif API</h1>
+    <p>Search for gifs below and we'll give you a handy json file back for you to do cool stuff with</p>
+    <div class="search">
+        <form action="/search" method="get" id="search">
+          <div id="searchfields">
+            <input type="text" placeholder="unicorn" name="tag">
+          </div>
+          <input type="submit">        
+        </form>
+      <a href="#" class="advanced">advanced search</a>
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>
+    $('a.advanced').on('click', function() {
+      $('#searchfields').append('<label for="width">width</label><input type="text" name="width"><label for="height">height</label><input type="text" name="height"><label for="weight">weight</label><input type="text" name="weight">');
+    })
+  </script>
+</body>
+</html>
