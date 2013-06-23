@@ -1,5 +1,5 @@
-var db = 'http://localhost:8000/gifs.json';
-// var db = 'http://gifapi.co/gifs.json';
+// var db = 'http://localhost:8000/gifs.json';
+var db = 'http://gifapi.co/gifs.json';
 
 exports.list = function(req, res){
   var http = require('http');
