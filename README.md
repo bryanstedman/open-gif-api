@@ -1,10 +1,11 @@
 The Open Gif API
 =====
+[Still a work in progress - pull requests are welcome]
 
 This is an open source json API for searching for animated gifs. It pulls from gifapi.co, another open source project where anyone can add or edit gifs. You will not find any actual gifs here, just json files for you to do cool stuff with. If you do build something using the API let me know and I might give it a link or shoutout.
 
 ## Searching
-You can search for gifs with a number of ways - by tag, file weight, width or heigt - or any combination there of. You can also search for the latest gif or a random gif.
+You can search for gifs with a number of ways - by tag, file weight, width or height - or any combination there of. You can also search for the latest gif or a random gif.
 
 ### All the GIFs!!!
 You can access the raw json file with all gifs at [opengifapi.com/all](http://opengifapi.com/all) similarly it is found on the gifAPI at [gifapi.co/gifs.json](gifapi.co/gifs.json) where it is maintained. 
